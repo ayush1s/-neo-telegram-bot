@@ -14,7 +14,8 @@
 Create a file named `.env` in the `NEO OPS` directory and add your token:
 
 ```
-TELEGRAM_BOT_TOKEN="YOUR_NEW_TOKEN_HERE"  # Replace with the token from BotFather
+TELEGRAM_BOT_TOKEN="7840746831:AAFKcW3xkURPVug16LFE-0jVidBewnOrYOI
+"  # Replace with the token from BotFather
 ```
 
 ## Step 3: Test Your Bot
