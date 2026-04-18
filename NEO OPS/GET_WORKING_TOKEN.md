@@ -1,8 +1,5 @@
 # 🔧 How to Get a Working Bot Token
 
-## 🚨 Current Issue
-Your token `8150634144:AAG5SNj7AWMhRdiGuyb19A48ERQTK4MpKTE` is **INVALID**.
-
 ## 📱 Step-by-Step Solution
 
 ### Step 1: Open Telegram
@@ -35,10 +32,10 @@ Keep your token secure and store it safely, it can be used by anyone to control 
 ### Step 5: Copy the Token
 Copy ONLY the token part: `1234567890:ABCdefGHIjklMNOpqrsTUVwxyz`
 
-### Step 6: Update Your Code
-Replace the token in `NEO_OPS.py`:
-```python
-TOKEN = "1234567890:ABCdefGHIjklMNOpqrsTUVwxyz"  # Your new token here
+### Step 6: Update Your Environment
+Create a file named `.env` in the `NEO OPS` directory and add your token:
+```
+TELEGRAM_BOT_TOKEN=1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
 ```
 
 ### Step 7: Test
@@ -70,4 +67,4 @@ When you run `python NEO_OPS.py`, you should see:
 1. Try creating a completely new bot
 2. Make sure you're using the official @BotFather
 3. Check that the bot wasn't deleted
-4. Try the token in a different script first 
+4. Try the token in a different script first

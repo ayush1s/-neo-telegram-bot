@@ -9,12 +9,13 @@
 5. **Enter a username** for your bot (e.g., "neo_evolution_bot") - must end with "bot"
 6. **Copy the token** that BotFather gives you
 
-## Step 2: Update Your Code
+## Step 2: Update Your Environment
 
-Replace the TOKEN in `NEO_OPS.py` with your new token:
+Create a file named `.env` in the `NEO OPS` directory and add your token:
 
-```python
-TOKEN = "YOUR_NEW_TOKEN_HERE"  # Replace with the token from BotFather
+```
+TELEGRAM_BOT_TOKEN="7840746831:AAFKcW3xkURPVug16LFE-0jVidBewnOrYOI
+"  # Replace with the token from BotFather
 ```
 
 ## Step 3: Test Your Bot
@@ -45,7 +46,7 @@ TOKEN = "YOUR_NEW_TOKEN_HERE"  # Replace with the token from BotFather
 
 ### If you get "Unauthorized" error:
 - Make sure you copied the token correctly
-- Check that there are no extra spaces
+- Check that there are no extra spaces in your `.env` file
 - Verify the token starts with numbers and contains a colon
 
 ### If you get "Conflict" error:
@@ -73,4 +74,4 @@ Use this token to access the HTTP API:
 1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
 
 Keep your token secure and store it safely, it can be used by anyone to control your bot.
-``` 
+```

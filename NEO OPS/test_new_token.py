@@ -1,8 +1,19 @@
 import asyncio
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 from telegram import Bot
 
 async def test_bot():
-    TOKEN = "7840746831:AAF3dCFihiynT-Bxt9brSpTlOasT7Io0wu4"
+    TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+    if not TOKEN:
+        print("❌ Error: TELEGRAM_BOT_TOKEN environment variable not set.")
+        print("Please create a .env file with TELEGRAM_BOT_TOKEN=your_token_here")
+        return
 
     try:
         print("🔍 Testing bot token...")
@@ -15,7 +26,7 @@ async def test_bot():
         # Get updates to clear any pending ones
         updates = await bot.get_updates(offset=-1)
         print(f"📨 Cleared {len(updates)} pending updates")
-        
+
         print("\n🎯 Bot is ready! You can now:")
         if hasattr(me, 'username') and me.username:
             print(f"1. Find your bot on Telegram: @{me.username}")
@@ -23,13 +34,13 @@ async def test_bot():
             print("1. Find your bot on Telegram (username not set)")
         print("2. Start a conversation with it")
         print("3. Send commands like: 'Neo Mode', 'Override Reality', etc.")
-        
+
     except Exception as e:
         print(f"❌ Error: {e}")
         if "Unauthorized" in str(e):
-            print("🔑 Invalid token. Please check your bot token.")
+            print("🔑 Invalid token. Please check your TELEGRAM_BOT_TOKEN.")
         elif "Conflict" in str(e):
             print("⚠️ Another instance is using this token.")
 
 if __name__ == "__main__":
-    asyncio.run(test_bot()) 
+    asyncio.run(test_bot())
