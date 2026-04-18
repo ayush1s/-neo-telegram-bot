@@ -33,8 +33,8 @@
 1. In Railway dashboard, click your project
 2. Go to "Variables" tab
 3. Add new variable:
-   - **Name:** `TELEGRAM_BOT_TOKEN`
-   - **Value:** `YOUR_REAL_TOKEN_HERE` (Get it from @BotFather)
+   - **Name:** `7840746831:AAFKcW3xkURPVug16LFE-0jVidBewnOrYOI`
+   - **Value:** `7840746831:AAFKcW3xkURPVug16LFE-0jVidBewnOrYOI` (Get it from @BotFather)
 4. Click "Add"
 
 ### Step 5: Check Status
