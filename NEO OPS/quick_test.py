@@ -1,7 +1,13 @@
 import asyncio
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 # This script quickly tests your Telegram bot token and connection.
 # Usage: python quick_test.py
-# Make sure to replace TOKEN below with your actual bot token from @BotFather.
+# Make sure to set TELEGRAM_BOT_TOKEN in your environment or .env file.
 
 try:
     from telegram import Bot
@@ -13,35 +19,36 @@ except ImportError:
     sys.exit(1)
 
 
-# 🔧 REPLACE THIS WITH YOUR BOT TOKEN FROM BOTFATHER
-TOKEN = "7840746831:AAF569DMKNhQzEg60DWTW9jz7tRBxO_uZ0U"
+# 🔧 TOKEN loaded from environment variable
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 async def quick_test():
-    if TOKEN == "7840746831:AAF569DMKNhQzEg60DWTW9jz7tRBxO_uZ0U":
-        print("❌ Please replace TOKEN with your actual bot token from @BotFather")
+    if not TOKEN:
+        print("❌ TELEGRAM_BOT_TOKEN environment variable not set.")
         print("📱 Go to Telegram, find @BotFather, and create a new bot with /newbot")
+        print("💡 Then create a .env file with: TELEGRAM_BOT_TOKEN=your_token_here")
         return
-    
+
     try:
         print("🔍 Testing bot connection...")
         bot = Bot(token=TOKEN)
         me = await bot.get_me()
-        
+
         print("✅ SUCCESS! Bot is working!")
         print(f"🤖 Bot Name: {me.first_name}")
         print(f"📝 Username: @{me.username}")
         print(f"🔗 Link: https://t.me/{me.username}")
-        
+
         print("\n🎯 Next steps:")
         print("1. Click the link above to open your bot")
         print("2. Click 'Start' to begin chatting")
         print("3. Send: 'Neo Mode' to test")
         print("4. Run: python NEO_OPS.py to start the full bot")
-        
+
     except Exception as e:
         print(f"❌ Error: {e}")
         if "Unauthorized" in str(e):
-            print("🔑 Invalid token. Please check your bot token from @BotFather")
+            print("🔑 Invalid token. Please check your TELEGRAM_BOT_TOKEN.")
 
 if __name__ == "__main__":
-    asyncio.run(quick_test()) 
+    asyncio.run(quick_test())

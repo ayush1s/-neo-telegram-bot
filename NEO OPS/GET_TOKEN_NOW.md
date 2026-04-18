@@ -1,6 +1,6 @@
 # 🚨 IMMEDIATE ACTION REQUIRED
 
-Your bot token is **INVALID**. You need to get a real token from Telegram.
+Your bot token is missing or invalid. You need to get a real token from Telegram.
 
 ## 🔥 DO THIS RIGHT NOW:
 
@@ -13,11 +13,11 @@ Your bot token is **INVALID**. You need to get a real token from Telegram.
 6. **Enter username**: `your_neo_bot` (must end with "bot")
 7. **Copy the token** that BotFather gives you
 
-### Step 2: Update Your Code
-Replace the token in `NEO_OPS.py`:
+### Step 2: Update Your Environment
+Create a file named `.env` in the `NEO OPS` directory and add your token:
 
-```python
-TOKEN = "1234567890:ABCdefGHIjklMNOpqrsTUVwxyz"  # Your real token here
+```
+TELEGRAM_BOT_TOKEN=1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
 ```
 
 ### Step 3: Test It
@@ -39,10 +39,10 @@ Keep your token secure and store it safely, it can be used by anyone to control 
 Copy ONLY the token part: `1234567890:ABCdefGHIjklMNOpqrsTUVwxyz`
 
 ## ❌ DON'T USE:
-- `7840746831:AAGA7dpO9dZE2kXTnNGGp39kannU4Ntx4wg` (This is fake)
+- Hardcoded tokens in your script
 - Any token that doesn't come from @BotFather
 
 ## ✅ Once You Have the Token:
-1. Update `NEO_OPS.py` with your real token
+1. Create a `.env` file with your real token
 2. Run: `python NEO_OPS.py`
-3. Find your bot on Telegram and start chatting! 
+3. Find your bot on Telegram and start chatting!

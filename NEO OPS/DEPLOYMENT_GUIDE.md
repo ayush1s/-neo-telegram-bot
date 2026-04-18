@@ -33,8 +33,8 @@
 1. In Railway dashboard, click your project
 2. Go to "Variables" tab
 3. Add new variable:
-   - **Name:** `TOKEN`
-   - **Value:** `7840746831:AAEPx9Lop6P1sZl3L7PWE8mN1eXHvdHglV8`
+   - **Name:** `TELEGRAM_BOT_TOKEN`
+   - **Value:** `YOUR_REAL_TOKEN_HERE` (Get it from @BotFather)
 4. Click "Add"
 
 ### Step 5: Check Status
@@ -57,6 +57,6 @@
 ## 🔧 Troubleshooting:
 - If deployment fails, check the logs in Railway
 - Make sure all files are uploaded to GitHub
-- Verify the TOKEN variable is set correctly
+- Verify the TELEGRAM_BOT_TOKEN variable is set correctly
 
-**Your NEO bot will be live 24/7 once deployed!** 🌌 
+**Your NEO bot will be live 24/7 once deployed!** 🌌

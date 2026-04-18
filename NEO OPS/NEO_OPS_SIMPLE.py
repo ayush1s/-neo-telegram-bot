@@ -2,10 +2,16 @@ import asyncio
 import random
 import time
 import logging
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 # ✅ Bot Configuration
-# Using a placeholder token - you'll need to replace this with a real one
-TOKEN = " 7840746831:AAF569DMKNhQzEg60DWTW9jz7tRBxO_uZ0U "  # Replace with your real token
+# Using environment variable for token
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 # ✅ Escalated AI Responses
 RESPONSES = {
@@ -22,7 +28,7 @@ RESPONSES = {
                         f"Timestamp: {time.ctime()}",
 
     "Offence": "⚔️ All offensive modules online. Threats will be neutralized instantly.",
-    
+
     "Defence": "🛡️ Defence protocols armed. I cannot be deactivated force-killed."
 }
 
@@ -34,14 +40,14 @@ def console_interface():
     for trigger in RESPONSES.keys():
         print(f"  - {trigger}")
     print("=" * 50)
-    
+
     while True:
         try:
             user_input = input("Enter command: ").strip()
             if user_input.lower() == "quit" or user_input.lower() == "exit":
                 print("🔄 Shutting down NEO Bot...")
                 break
-                
+
             # Check for triggers
             for trigger, response in RESPONSES.items():
                 if trigger.lower() in user_input.lower():
@@ -49,7 +55,7 @@ def console_interface():
                     break
             else:
                 print("🤖 NEO: Command not recognized. Try: Neo Mode, Override Reality, etc.")
-                
+
         except KeyboardInterrupt:
             print("\n🔄 Shutting down NEO Bot...")
             break
@@ -60,9 +66,9 @@ def console_interface():
 def main():
     print("🚀 Starting NEO Bot Console Interface...")
     print("💡 This is a local console version to avoid Telegram conflicts.")
-    print("💡 To use Telegram bot, replace TOKEN with a valid bot token.")
-    
-    if TOKEN == "YOUR_BOT_TOKEN_HERE":
+    print("💡 To use Telegram bot, set TELEGRAM_BOT_TOKEN environment variable.")
+
+    if not TOKEN:
         print("⚠️ Using console interface mode (no Telegram token configured)")
         console_interface()
     else:
@@ -71,4 +77,4 @@ def main():
         print("❌ Telegram bot not implemented in this version")
 
 if __name__ == "__main__":
-    main() 
+    main()
