@@ -33,7 +33,7 @@
 1. In Railway dashboard, click your project
 2. Go to "Variables" tab
 3. Add new variable:
-   - **Name:** ` NEO: Next Evolution Operator for OBLIVION OS `
+   - **Name:** ` TOKEN `
    - **Value:** ` 7840746831:AAFXH_UbcYGy26Q_kZF8AU0po4CRFxWX61s ` (Get it from @BotFather)
 4. Click "Add"
 
