@@ -17,8 +17,7 @@ Your bot token is missing or invalid. You need to get a real token from Telegram
 Create a file named `.env` in the `NEO OPS` directory and add your token:
 
 ```
-TELEGRAM_BOT_TOKEN=1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
-```
+TELEGRAM_BOT_TOKEN=7840746831:AAFXH_UbcYGy26Q_kZF8AU0po4CRFxWX61s
 
 ### Step 3: Test It
 ```bash
