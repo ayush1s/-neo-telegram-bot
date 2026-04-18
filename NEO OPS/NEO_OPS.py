@@ -7,10 +7,14 @@ import time
 import platform
 import logging
 import sys
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # ✅ Bot Configuration
-import os
-TOKEN = os.getenv('TOKEN', "7840746831:AAEPx9Lop6P1sZl3L7PWE8mN1eXHvdHglV8")  # Use environment variable or fallback
+TOKEN = os.getenv('TOKEN')
 TRIGGERS = [
     "Neo Mode", "Override Reality", "Command Protocol Activate",
     "This is a dream?", "Offence", "Defence"
@@ -31,7 +35,7 @@ RESPONSES = {
                         f"Timestamp: {time.ctime()}",
 
     "Offence": "⚔️ All offensive modules online. Threats will be neutralized instantly.",
-    
+
     "Defence": "🛡️ Defence protocols armed. I cannot be deactivated force-killed."
 }
 
@@ -58,7 +62,7 @@ async def start_command(update, context):
         "• Defence - Defence protocols\n\n"
         "💡 Use the menu buttons below or type commands directly."
     )
-    
+
     await update.message.reply_text(
         welcome_message,
         reply_markup=get_menu_keyboard(),
@@ -81,7 +85,7 @@ async def help_command(update, context):
         "• Defence - Defence protocols\n\n"
         "🌌 Reality is yours to command."
     )
-    
+
     await update.message.reply_text(
         help_text,
         reply_markup=get_menu_keyboard(),
@@ -111,22 +115,27 @@ def main():
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         level=logging.INFO
     )
-    
+
+    if not TOKEN:
+        print("❌ Error: TOKEN environment variable is not set.")
+        print("💡 Please create a .env file with your TOKEN.")
+        sys.exit(1)
+
     try:
         print("🚀 Initializing NEO Bot...")
-        
+
         app = ApplicationBuilder().token(TOKEN).build()
-        
+
         # Add command handlers
         app.add_handler(CommandHandler("start", start_command))
         app.add_handler(CommandHandler("help", help_command))
-        
+
         # Add message handler
         app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_message))
-        
+
         # Add error handler
         app.add_error_handler(error_handler)
-        
+
         # Set bot commands
         commands = [
             BotCommand("start", "Start NEO Bot and show menu"),
@@ -138,22 +147,22 @@ def main():
             BotCommand("offence", "Offensive Modules"),
             BotCommand("defence", "Defence Protocols")
         ]
-        
+
         # Set commands asynchronously
         async def setup_commands():
             await app.bot.set_my_commands(commands)
-        
+
         # Run setup in event loop
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         loop.run_until_complete(setup_commands())
-        
+
         print("🤖 NEO Bot Online. Awaiting Commands...")
         print("💡 Try sending: 'Neo Mode', 'Override Reality', 'Command Protocol Activate', etc.")
         print("🔄 Starting polling...")
-        
+
         app.run_polling(drop_pending_updates=True)
-        
+
     except Exception as e:
         print(f"❌ Failed to start bot: {e}")
         if "Conflict" in str(e):
